@@ -1,0 +1,37 @@
+# **Finding Lane Lines on the Road** 
+
+## Project Writeup, by Felix Ding
+---
+**Finding Lane Lines on Road**
+
+The goals / steps of this project are the following:
+* make a pipeline that finds lane lines on the road
+* Reflect
+
+### Pipeline Description
+Steps to create lane lines are as shown:
+3 main steps:
+1. before Hough
+    a. takes image and creates a grayscale version
+    b. adding blur
+    c. applying canny vision
+    d. applying region of interest mask
+
+2. Hough transform + lines creation
+    a. takes the result/output from the 1 step
+    b. using the helper funciton hough_lines to draw lines
+    
+3. after Hough
+    a. takes the result/output from step 2
+    b. Identify and separates lines from left and right side of lane through slope threshold (0.5 and -0.5)
+    c. calculates an average intercept and slope
+    d. draws a straight line for left and right lane line respectively
+    
+
+###Potential Shortcomings
+1. Because the algorithm extrapolates regardless of relationship between frames, the lines could change drastically from one frame to another
+2. Because of the fixed slope threshold, the algorithm would have trouble identifying lanes at atypical angles
+
+###Potential Improvements
+1. Add in logic to identify outliers for slopes detected between frames (so lines do not vary wildly from frame to frame)
+2. Add in an algorithm to alter/change the slope threshold depending on the circumstances
